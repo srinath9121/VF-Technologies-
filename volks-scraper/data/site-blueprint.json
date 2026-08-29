@@ -1,0 +1,191 @@
+[
+  {
+    "section_name": "Hero",
+    "source_page": "https://volksresources.com/",
+    "relevant_headings": [
+      "Empowering smarter cities with seamless connectivity.",
+      "Connecting You to What Matters",
+      "Expanding coverage, empowering connection"
+    ],
+    "relevant_paragraphs": [
+      "Welcome to Volks Resources , your reliable partner in delivering comprehensive solutions and services. With over a decade of experience in the several industries, we have successfully completed multiple projects that underscore our commitment to excellence"
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/logo.png"
+    ],
+    "suggested_visual_3d_idea": "A 3D interactive globe with glowing fiber-optic lines connecting major cities, rotating slowly in the background.",
+    "suggested_scroll_interaction": "Parallax effect where the globe zooms out and the fiber lines pulse with light as the user scrolls down."
+  },
+  {
+    "section_name": "Company introduction",
+    "source_page": "https://volksresources.com/about.php",
+    "relevant_headings": [
+      "About VOLKS",
+      "Deliver certainty"
+    ],
+    "relevant_paragraphs": [
+      "VOLKS is a knowledge-based technical partner. We take ownership of the whole program — scoping the work, engineering the design, controlling the schedule and budget, and managing every trade — so our clients get finished, documented infrastructure rather than a stack of vendors to coordinate.",
+      "Our work spans outside-plant fiber, wireless and cell-site engineering, utility and pole make-ready, and field delivery, with an emerging data-center practice."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/about3-img1.png",
+      "https://volksresources.com/assets/images/about3-img2.png"
+    ],
+    "suggested_visual_3d_idea": "A sleek, metallic cross-section of a high-capacity fiber cable, revealing intricate inner glass strands.",
+    "suggested_scroll_interaction": "The cable cross-section slowly splits open on scroll, revealing the glowing text of the company's mission statement inside."
+  },
+  {
+    "section_name": "Key statistics",
+    "source_page": "https://volksresources.com/",
+    "relevant_headings": [
+      "200 +",
+      "100 +",
+      "12 +",
+      "80,000 +",
+      "30,000,000 +"
+    ],
+    "relevant_paragraphs": [
+      "Customers Served",
+      "Employees Globally",
+      "Years in Business",
+      "Cell Site Successfully Executed",
+      "ft of completed OSP work in 2024"
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/icons/global.png",
+      "https://volksresources.com/assets/images/icons/united-states.png"
+    ],
+    "suggested_visual_3d_idea": "Floating 3D glass cards with glowing neon borders representing each statistic.",
+    "suggested_scroll_interaction": "As the section enters the viewport, the numbers rapidly tick up from 0 to their final values while the cards tilt dynamically based on scroll velocity."
+  },
+  {
+    "section_name": "Why Volks",
+    "source_page": "https://volksresources.com/about.php",
+    "relevant_headings": [
+      "Why Choose Volks",
+      "Cost-Effective",
+      "Nationwide Coverage",
+      "24/7 Support",
+      "One-Stop Shop"
+    ],
+    "relevant_paragraphs": [
+      "Smart solutions that deliver value.",
+      "Active delivery across 22 states.",
+      "Always-on support for uninterrupted operations.",
+      "Everything You Need, All in One Place."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/icons/deal.png",
+      "https://volksresources.com/assets/images/icons/24-hours-support.png",
+      "https://volksresources.com/assets/images/icons/solution.png"
+    ],
+    "suggested_visual_3d_idea": "A central glowing 3D shield orbited by smaller icons representing support, coverage, and efficiency.",
+    "suggested_scroll_interaction": "The orbiting icons expand outward into a grid layout, snapping into place alongside their respective paragraphs as the user scrolls."
+  },
+  {
+    "section_name": "Services overview",
+    "source_page": "https://volksresources.com/",
+    "relevant_headings": [
+      "Our Services",
+      "Tailored Solutions for Your Success"
+    ],
+    "relevant_paragraphs": [
+      "At Volks, we specialize in Services and Solution Delivery, dedicated to adding value through the execution of end-to-end turnkey projects and sourcing top-tier talent. Our expert team is dedicated to delivering reliable, high-quality services that empower you to stay connected, no matter where you are."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/services/wirless.jpg",
+      "https://volksresources.com/assets/images/services/osp_engg.jpg"
+    ],
+    "suggested_visual_3d_idea": "A central glowing hub with three distinct energetic pathways branching out towards the three main service sectors.",
+    "suggested_scroll_interaction": "A fast 'fly-through' camera effect that dives into the central hub and seamlessly transitions into the specific service sections below."
+  },
+  {
+    "section_name": "Wireless Engineering",
+    "source_page": "https://volksresources.com/wireless.php",
+    "relevant_headings": [
+      "Wireless Engineering"
+    ],
+    "relevant_paragraphs": [
+      "At Volks, we provide a range of wireless services that cover every stage, from designing and deploying networks to optimizing performance. Our goal is to deliver rock-solid connectivity that meets the unique needs of each client. By leveraging cutting-edge technology, we craft tailored communication solutions that are both seamless and effective."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/services/wirless_engg_01.jpg",
+      "https://volksresources.com/assets/images/icons/wifi.png"
+    ],
+    "suggested_visual_3d_idea": "A stylized 3D cell tower transmitting concentric, holographic signal waves.",
+    "suggested_scroll_interaction": "The signal waves pulse outwards continuously, with the pulse speed increasing as the user scrolls faster through the section."
+  },
+  {
+    "section_name": "Outside Plant Engineering",
+    "source_page": "https://volksresources.com/osp.php",
+    "relevant_headings": [
+      "Outside Plant Engineering",
+      "Field Data Collection",
+      "Design/Drafting"
+    ],
+    "relevant_paragraphs": [
+      "Volks Resources Outside Plant Engineering specializes in comprehensive services for telecommunications infrastructure. We manage every phase of the project lifecycle, including planning, fielding, inspection, design, drafting, permitting, and consulting services. Our expertise ensures that projects are executed efficiently and meet industry standards."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/services/osp_engg_01.jpg",
+      "https://volksresources.com/assets/images/services/logo/logo-AutoCAD.jpg",
+      "https://volksresources.com/assets/images/services/logo/logo-3GIS.jpg"
+    ],
+    "suggested_visual_3d_idea": "A 3D city street terrain where the ground turns transparent, revealing a glowing underground conduit and fiber network layout.",
+    "suggested_scroll_interaction": "As the user scrolls down, glowing orange light shoots through the underground fiber lines, simulating data transfer."
+  },
+  {
+    "section_name": "Data Center",
+    "source_page": "https://volksresources.com/data-center-installation.php",
+    "relevant_headings": [
+      "Data Center"
+    ],
+    "relevant_paragraphs": [
+      "Effective on-the-ground installation requires not only innovative designs but also skilled personnel to bring those designs to life. At Volks, our data center installation process is backed by technicians with extensive experience and a comprehensive understanding of the equipment involved.",
+      "Our services are designed to support traditional applications, storage connections, and AI workloads, ensuring that your data center networks operate seamlessly."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/services/data-center-installation_01.jpg",
+      "https://volksresources.com/assets/images/icons/data-center.png"
+    ],
+    "suggested_visual_3d_idea": "An isometric 3D view of a futuristic server rack array with cascading LED status lights.",
+    "suggested_scroll_interaction": "Server racks dynamically slide into formation from off-screen as the user scrolls, building the complete data center in real-time."
+  },
+  {
+    "section_name": "Careers",
+    "source_page": "https://volksresources.com/search-jobs.php",
+    "relevant_headings": [
+      "Search Jobs"
+    ],
+    "relevant_paragraphs": [
+      "Our elite team leverages deep industry expertise to connect exceptional talent with groundbreaking opportunities.",
+      "Discover why businesses trust us to find the right talent and candidates trust us to find the perfect fit."
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/images/icons/customer-experience.png"
+    ],
+    "suggested_visual_3d_idea": "Abstract 3D silhouettes of professionals standing on interconnected glowing nodes.",
+    "suggested_scroll_interaction": "The silhouettes light up in sequence, drawing connecting lines between them to form a unified network web as the user scrolls."
+  },
+  {
+    "section_name": "Contact",
+    "source_page": "https://volksresources.com/contact.php",
+    "relevant_headings": [
+      "Let's Connect!",
+      "Send us a Message"
+    ],
+    "relevant_paragraphs": [
+      "Whether you have questions about our services, want to explore a partnership, or just want to say hello - we're all ears. Fill out the form below, and our team will get back to you promptly.",
+      "+1 972 636 1880",
+      "5340 Legacy Dr, Suite 180 Plano TX 75024",
+      "info@volksresources.com",
+      "Suite No. X2-037 PO Box: 514246 SAIF Zone, Sharjah United Arab Emirates (UAE)"
+    ],
+    "relevant_images": [
+      "https://volksresources.com/assets/img/icons/contact-icon1.png",
+      "https://volksresources.com/assets/img/icons/contact-icon2.png"
+    ],
+    "suggested_visual_3d_idea": "A dark, stylized 3D map of the world with glowing location pins over Texas, UAE, and India.",
+    "suggested_scroll_interaction": "The camera pans smoothly across the world map, dropping pins on the office locations which emit glowing ripple effects."
+  }
+]
