@@ -784,34 +784,6 @@ img {
   height: 22px;
   object-fit: contain;
 }
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.osp-tools-grid {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.osp-tool-logo {
-  background: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-.osp-tool-logo img {
-  height: 26px;
-  object-fit: contain;
-}
 
 /* ===== Partners & Testimonials ===== */
 .partners {
