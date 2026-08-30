@@ -1,5 +1,5 @@
 {
   "framework": "vite",
-  "buildCommand": "cd volks-site && npm install && npm run build",
-  "outputDirectory": "volks-site/dist"
+  "buildCommand": "cd vf-site && npm install && npm run build",
+  "outputDirectory": "vf-site/dist"
 }

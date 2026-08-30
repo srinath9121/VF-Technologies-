@@ -1,0 +1,130 @@
+
+/* ===== PREMIUM INTERACTION OVERRIDES ===== */
+
+/* --- Custom Cursor --- */
+body {
+  cursor: none !important;
+}
+
+a, button, img, .navbar-logo {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border 0.3s ease;
+}
+
+.custom-cursor.cursor-hover {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  mix-blend-mode: normal;
+}
+
+.custom-cursor.cursor-image {
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px dashed var(--accent);
+  mix-blend-mode: normal;
+}
+
+/* --- Buttons --- */
+.btn-primary-teal {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Remove excessive shadow on hover and replace with subtle arrow/movement */
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-teal:hover {
+  transform: translateY(-1px);
+  background: #0284c7;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+}
+
+/* --- Image Interaction --- */
+.card-image-wrap {
+  overflow: hidden;
+}
+
+.card-image-wrap img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.card-image-wrap:hover img {
+  transform: scale(1.03);
+  filter: grayscale(0%) contrast(1.1);
+}
+
+.about-image-stack img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.about-image-stack:hover img:first-child {
+  transform: scale(1.02) translate3d(-5px, -5px, 0);
+}
+
+.about-image-stack:hover img:last-child {
+  transform: scale(1.02) translate3d(5px, 5px, 0);
+}
+
+/* --- Typography Readability & Animation Rest --- */
+.story-word {
+  /* Prevent jarring jumps during scrub */
+  display: inline-block;
+}
+
+.section-subtitle, .about-statement-sub, .hero-cinematic-subtitle {
+  opacity: 0.9; /* ensure readability */
+}
+
+/* --- Chapter System / HUD (Make it editorial) --- */
+.persistent-chapter-rail {
+  opacity: 0.25;
+  transition: opacity 0.5s ease;
+}
+
+.persistent-chapter-rail:hover {
+  opacity: 0.8;
+}
+
+.rail-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.rail-dot.active {
+  background: var(--accent);
+  transform: scale(1.4);
+  box-shadow: none; /* Removed neon glow for premium feel */
+}
+
+.scroll-hud-badge {
+  background: rgba(3, 7, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0.4;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-hud-badge:hover {
+  opacity: 1;
+}
+
+.hud-indicator-dot {
+  box-shadow: none; /* Restrained */
+}

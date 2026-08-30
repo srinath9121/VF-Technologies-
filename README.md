@@ -1,6 +1,6 @@
-# Volks Resources — Corporate Website
+# VF Technologies — Corporate Website
 
-A premium, scroll-driven single-page corporate website for **Volks Resources**, a US-based telecom & utility infrastructure company.
+A premium, scroll-driven single-page corporate website for **VF Technologies**, a US-based telecom & utility infrastructure company.
 
 ---
 
@@ -37,7 +37,7 @@ A premium, scroll-driven single-page corporate website for **Volks Resources**, 
 ## Getting Started
 
 ```bash
-cd volks-site && npm install
+cd vf-site && npm install
 npm run dev        # http://localhost:5173
 npm run build      # Production build
 ```

@@ -1,0 +1,49 @@
+
+/* ===== REFINEMENT CSS OVERRIDES ===== */
+.navbar {
+  /* Ensure header doesn't overlap logo/nav by providing proper spacing and flex-wrap prevention */
+  gap: 2rem;
+}
+
+.navbar-logo {
+  min-width: max-content;
+}
+
+.navbar-links {
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-right: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .navbar-links {
+    display: none; /* Hide on smaller screens to prevent overlap */
+  }
+}
+
+.scroll-hud-badge {
+  /* Reduce prominence of HUD */
+  opacity: 0.5;
+  transform: scale(0.85);
+  transform-origin: bottom right;
+}
+
+.persistent-chapter-rail {
+  /* Reduce prominence of chapter rail */
+  opacity: 0.4;
+}
+
+/* Ensure 3D canvas sits safely behind HTML content */
+.webgl-canvas-container {
+  z-index: 0 !important;
+}
+
+#root, main, .app-container {
+  z-index: 1;
+  position: relative;
+}
+
+.section {
+  position: relative;
+  z-index: 10;
+}
