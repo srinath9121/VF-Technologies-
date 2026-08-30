@@ -19,17 +19,17 @@ export default function App() {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Lenis ultra-smooth scroll optimized for responsiveness
+    // Lenis ultra-smooth scroll optimized for zero lag and crisp stops
     const lenis = new Lenis({
-      duration: 1.2, // Reduced duration for snappier response
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo ease out
+      duration: 0.8, // Snappy, short duration to eliminate "halfway" floaty feeling
+      easing: (t) => 1 - Math.pow(1 - t, 4), // Quartic ease out: fast start, decisive stop
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      smoothTouch: false, // Let native touch scrolling handle mobile for zero lag
+      wheelMultiplier: 1.2, // Makes mouse wheel input instantly responsive
+      smoothTouch: false,
       touchMultiplier: 2,
-      syncTouch: true, // Syncs touch scroll with Lenis for smoother feel
+      syncTouch: true,
     })
     lenisRef.current = lenis
 
