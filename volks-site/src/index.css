@@ -219,6 +219,16 @@ img {
   width: 100%;
 }
 
+.navbar-links a.nav-link-active {
+  color: var(--accent);
+  text-shadow: 0 0 14px rgba(0, 212, 255, 0.7);
+}
+
+.navbar-links a.nav-link-active::after {
+  width: 100%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
 .navbar-cta {
   padding: 0.65rem 1.6rem;
   border: 1px solid var(--accent);
