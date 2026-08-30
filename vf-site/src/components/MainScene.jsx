@@ -610,6 +610,137 @@ function AppDesignScene({ scrollProgress }) {
   )
 }
 
+// Dense Fiber Optic Strand Bundle (High-Density Glow with Scroll Zoom-In/Out)
+function FiberOpticCableScene({ scrollProgress }) {
+  const groupRef = useRef()
+  const tipsRef = useRef()
+  const strandCount = 2200
+
+  const isVisible = scrollProgress <= 0.28
+  const opacity = scrollProgress > 0.15 ? Math.max(0, 1 - (scrollProgress - 0.15) / 0.10) : 1
+
+  const [linePositions, tipPositions, tipColors] = useMemo(() => {
+    const linePos = new Float32Array(strandCount * 6)
+    const tPos = new Float32Array(strandCount * 3)
+    const tCol = new Float32Array(strandCount * 3)
+
+    const colorCyan = new THREE.Color('#00e5ff')
+    const colorBrightWhite = new THREE.Color('#ffffff')
+    const colorElectricBlue = new THREE.Color('#2979ff')
+    const colorDeepBlue = new THREE.Color('#002699')
+
+    for (let i = 0; i < strandCount; i++) {
+      const radiusSheath = Math.pow(Math.random(), 0.7) * 0.85
+      const angleSheath = Math.random() * Math.PI * 2
+      const startX = 4.5 + radiusSheath * Math.cos(angleSheath)
+      const startY = 2.0 + radiusSheath * Math.sin(angleSheath)
+      const startZ = -5.0 + (Math.random() - 0.5) * 1.5
+
+      const spreadAngle = Math.random() * Math.PI * 2
+      const spreadDist = Math.pow(Math.random(), 0.6) * 3.5
+      const length = 8.0 + Math.random() * 4.5
+
+      const endX = startX - length * 0.68 + Math.cos(spreadAngle) * spreadDist * 0.5
+      const endY = startY - length * 0.32 + Math.sin(spreadAngle) * spreadDist * 0.5
+      const endZ = startZ + length * 0.75 + (Math.random() - 0.5) * 2.0
+
+      linePos[i * 6] = startX
+      linePos[i * 6 + 1] = startY
+      linePos[i * 6 + 2] = startZ
+      linePos[i * 6 + 3] = endX
+      linePos[i * 6 + 4] = endY
+      linePos[i * 6 + 5] = endZ
+
+      tPos[i * 3] = endX
+      tPos[i * 3 + 1] = endY
+      tPos[i * 3 + 2] = endZ
+
+      const rand = Math.random()
+      const col = rand > 0.4 ? (rand > 0.75 ? colorBrightWhite : colorCyan) : (rand > 0.15 ? colorElectricBlue : colorDeepBlue)
+      tCol[i * 3] = col.r
+      tCol[i * 3 + 1] = col.g
+      tCol[i * 3 + 2] = col.b
+    }
+
+    return [linePos, tPos, tCol]
+  }, [])
+
+  useFrame((state) => {
+    if (!groupRef.current || !isVisible) return
+    const t = state.clock.getElapsedTime()
+
+    groupRef.current.rotation.z = Math.sin(t * 0.35) * 0.05 - 0.20
+    groupRef.current.rotation.y = Math.cos(t * 0.25) * 0.06 - 0.35
+    groupRef.current.rotation.x = Math.sin(t * 0.3) * 0.04 + 0.12
+
+    // SCROLL-DRIVEN DRAMATIC ZOOM-IN (Reverses smoothly on scroll up)
+    const normProgress = Math.min(1, scrollProgress / 0.22)
+    const zoomZ = THREE.MathUtils.lerp(-1.5, 7.5, normProgress)
+    const zoomScale = THREE.MathUtils.lerp(0.85, 3.2, normProgress)
+    const zoomX = THREE.MathUtils.lerp(0.5, -2.0, normProgress)
+    const zoomY = THREE.MathUtils.lerp(0, 0.8, normProgress)
+
+    groupRef.current.position.z = zoomZ
+    groupRef.current.position.x = zoomX
+    groupRef.current.position.y = zoomY
+    groupRef.current.scale.set(zoomScale, zoomScale, zoomScale)
+
+    if (tipsRef.current && tipsRef.current.material) {
+      tipsRef.current.material.opacity = (0.85 + Math.sin(t * 2.5) * 0.12) * opacity
+    }
+  })
+
+  if (!isVisible) return null
+
+  return (
+    <group ref={groupRef}>
+      <lineSegments>
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            count={linePositions.length / 3}
+            array={linePositions}
+            itemSize={3}
+          />
+        </bufferGeometry>
+        <lineBasicMaterial
+          color="#0066ff"
+          transparent
+          opacity={0.35 * opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </lineSegments>
+
+      <points ref={tipsRef}>
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            count={strandCount}
+            array={tipPositions}
+            itemSize={3}
+          />
+          <bufferAttribute
+            attach="attributes-color"
+            count={strandCount}
+            array={tipColors}
+            itemSize={3}
+          />
+        </bufferGeometry>
+        <pointsMaterial
+          size={0.08}
+          vertexColors
+          transparent
+          opacity={0.95 * opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          sizeAttenuation
+        />
+      </points>
+    </group>
+  )
+}
+
 export default function MainScene() {
   const [scrollProgress, setScrollProgress] = useState(0)
 
@@ -633,7 +764,7 @@ export default function MainScene() {
       overflow: 'hidden'
     }}>
       <Canvas
-        camera={{ position: [0, 0, 8.0], fov: 42 }}
+        camera={{ position: [0, 0, 10.0], fov: 42 }}
         gl={{ alpha: false, antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05 }}
       >
         <color attach="background" args={["#030712"]} />
@@ -645,6 +776,9 @@ export default function MainScene() {
         <CameraRig scrollProgress={scrollProgress} />
 
         <Float speed={1.2} rotationIntensity={0.12} floatIntensity={0.25}>
+          {/* Dense Fiber Optic Strand Bundle with Scroll Zoom-In/Out */}
+          <FiberOpticCableScene scrollProgress={scrollProgress} />
+          {/* Physical Conduit Cable Entrance & Interior Tunnel Travel */}
           <FiberTunnelScene scrollProgress={scrollProgress} />
           <PermittingBlueprintScene scrollProgress={scrollProgress} />
           <NetworkPlanningTopologyScene scrollProgress={scrollProgress} />
