@@ -19,20 +19,29 @@ export default function App() {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Lenis ultra-smooth scroll
+    // Lenis ultra-smooth scroll optimized for responsiveness
     const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.2, // Reduced duration for snappier response
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo ease out
       orientation: 'vertical',
+      gestureOrientation: 'vertical',
       smoothWheel: true,
+      wheelMultiplier: 1.0,
+      smoothTouch: false, // Let native touch scrolling handle mobile for zero lag
+      touchMultiplier: 2,
+      syncTouch: true, // Syncs touch scroll with Lenis for smoother feel
     })
     lenisRef.current = lenis
 
     // Sync Lenis with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
-    gsap.ticker.add((time) => {
+    
+    // Create a dedicated ticker function so we can remove it cleanly
+    const updateLenis = (time) => {
       lenis.raf(time * 1000)
-    })
+    }
+    
+    gsap.ticker.add(updateLenis)
     gsap.ticker.lagSmoothing(0)
 
     // Cinematic Reveal animations with 3D tilt
@@ -56,6 +65,7 @@ export default function App() {
     })
 
     return () => {
+      gsap.ticker.remove(updateLenis)
       lenis.destroy()
       ScrollTrigger.getAll().forEach(t => t.kill())
     }
