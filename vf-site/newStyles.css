@@ -10,18 +10,16 @@
   overflow: hidden;
   padding-top: 120px; /* Safe zone below header */
   padding-bottom: 60px;
-  background-image: url('https://vf-technologies.com/wp-content/uploads/2025/12/background-2400765_1280.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: transparent;
 }
 
 .hero-cinematic::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(3, 7, 18, 0.75); /* Deeper background for contrast */
+  background: radial-gradient(circle at 50% 45%, rgba(3, 7, 18, 0.25) 0%, rgba(3, 7, 18, 0.75) 100%);
   z-index: 1;
+  pointer-events: none;
 }
 
 .hero-cinematic-content {
@@ -52,7 +50,7 @@
 }
 
 .hero-cinematic-heading {
-  font-size: clamp(3.2rem, 6vw, 5.8rem);
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;

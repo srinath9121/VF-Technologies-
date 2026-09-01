@@ -1,79 +1,101 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Preloader from './components/Preloader'
 import MainScene from './components/MainScene'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Partners from './components/Partners'
-import Careers from './components/Careers'
-import Contact from './components/Contact'
+import TowerStoryOverlay, { TOWER_CHAPTERS } from './components/TowerStoryOverlay'
 import ScrollHUD from './components/ScrollHUD'
+import Cursor from './components/Cursor'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
   const lenisRef = useRef(null)
+  const scrollProgressRef = useRef(0)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
-    // Lenis smooth scroll synchronized seamlessly with GSAP ScrollTrigger
+    // 1. Lenis smooth scroll engine
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.1,
-      smoothTouch: false
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.5,
+      syncTouch: true,
+      syncTouchLerp: 0.075,
+      autoResize: true
     })
     lenisRef.current = lenis
 
-    // Bidirectional sync between Lenis and GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
-    
+
     const updateLenis = (time) => {
       lenis.raf(time * 1000)
     }
-    
+
     gsap.ticker.add(updateLenis)
     gsap.ticker.lagSmoothing(0)
+
+    // 2. GSAP ScrollTrigger for Vertical Tower Pinned Journey
+    const totalChapters = TOWER_CHAPTERS.length
+
+    const trigger = ScrollTrigger.create({
+      trigger: '.tower-pinned-viewport',
+      start: 'top top',
+      end: `+=${totalChapters * 120}%`,
+      pin: true,
+      scrub: 1.0,
+      onUpdate: (self) => {
+        scrollProgressRef.current = self.progress
+        const curIdx = Math.min(totalChapters - 1, Math.max(0, Math.floor(self.progress * totalChapters)))
+        setActiveIndex(curIdx)
+      }
+    })
 
     return () => {
       gsap.ticker.remove(updateLenis)
       lenis.destroy()
+      trigger.kill()
       ScrollTrigger.getAll().forEach(t => t.kill())
     }
   }, [])
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id)
-    if (el && lenisRef.current) {
-      lenisRef.current.scrollTo(el, { offset: -70 })
+  // Smooth glide to any tower chapter band
+  const scrollToChapter = (chapterIndex) => {
+    const totalChapters = TOWER_CHAPTERS.length
+    const targetProgress = chapterIndex / (totalChapters - 1)
+    const pinContainer = document.querySelector('.tower-pinned-viewport')
+
+    if (pinContainer && lenisRef.current) {
+      const pinTop = pinContainer.offsetTop
+      const pinDistance = totalChapters * 1.2 * window.innerHeight
+      const targetScroll = pinTop + targetProgress * pinDistance
+      lenisRef.current.scrollTo(targetScroll, { duration: 1.6 })
     }
   }
 
   return (
-    <>
-      <Preloader />
-      <ScrollHUD />
-      <MainScene />
-      <Navbar scrollTo={scrollTo} />
-      
-      <main className="content-wrapper">
-        <Hero />
-        <About />
-        <Services />
-        <Partners />
-        <Careers />
-        <Contact />
-      </main>
+    <div className="tower-experience-root">
+      {/* Precision Laser & Reticle Cursor */}
+      <Cursor />
 
-      <footer className="footer">
-        <p>© Copyright 2025 - VF Technologies. All Rights Reserved.</p>
-      </footer>
-    </>
+      {/* Vertical Altitude Chapter Rail */}
+      <ScrollHUD activeIndex={activeIndex} scrollToChapter={scrollToChapter} />
+
+      {/* Persistent 3D Telecom Tower World Canvas */}
+      <MainScene scrollProgressRef={scrollProgressRef} />
+
+      {/* Top Architectural Header */}
+      <Navbar scrollToChapter={scrollToChapter} />
+
+      {/* Pinned Tower Story Overlay Viewport */}
+      <div className="tower-pinned-viewport">
+        <TowerStoryOverlay activeIndex={activeIndex} scrollToChapter={scrollToChapter} />
+      </div>
+    </div>
   )
 }

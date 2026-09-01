@@ -104,9 +104,9 @@ export default function Services() {
   const pinWrapRef = useRef(null)
   const [activeChapterIdx, setActiveChapterIdx] = useState(0)
   const [scrollPct, setScrollPct] = useState(0)
-  const [syncState, setSyncState] = useState('CALIBRATING') // 'CALIBRATING' | 'SYNCHRONIZED'
+  const [syncState, setSyncState] = useState('CALIBRATING')
 
-  // 1. Primary GSAP + ScrollTrigger Timeline (Master Choreography & 3D Dispatch)
+  // 1. Primary GSAP + ScrollTrigger Timeline (Natural Stagger & Cinematic Focus Transitions)
   useEffect(() => {
     if (!containerRef.current || !pinWrapRef.current) return
 
@@ -116,7 +116,9 @@ export default function Services() {
     cards.forEach((card, i) => {
       gsap.set(card, {
         opacity: i === 0 ? 1 : 0,
-        y: i === 0 ? 0 : 30,
+        y: i === 0 ? 0 : 35,
+        filter: i === 0 ? 'blur(0px)' : 'blur(8px)',
+        scale: i === 0 ? 1 : 0.96,
         pointerEvents: i === 0 ? 'auto' : 'none'
       })
     })
@@ -127,13 +129,10 @@ export default function Services() {
         start: 'top top',
         end: `+=${total * 120}%`,
         pin: pinWrapRef.current,
-        scrub: 0.6,
+        scrub: 0.8,
         onUpdate: (self) => {
           const progress = self.progress
           setScrollPct(Math.round(progress * 100))
-
-          // Dispatch progress to 3D MainScene
-          window.dispatchEvent(new CustomEvent('update-scene-progress', { detail: progress }))
 
           const currentIdx = Math.min(total - 1, Math.max(0, Math.floor(progress * total)))
           setActiveChapterIdx(currentIdx)
@@ -146,8 +145,24 @@ export default function Services() {
         const nextCard = cards[idx + 1]
         const stepTime = (idx + 1) * 2
 
-        tl.to(card, { opacity: 0, y: -25, pointerEvents: 'none', duration: 0.8 }, stepTime - 0.4)
-          .to(nextCard, { opacity: 1, y: 0, pointerEvents: 'auto', duration: 0.8 }, stepTime)
+        tl.to(card, { 
+          opacity: 0, 
+          y: -30, 
+          filter: 'blur(8px)',
+          scale: 0.96,
+          pointerEvents: 'none', 
+          duration: 0.8,
+          ease: 'power2.inOut' 
+        }, stepTime - 0.4)
+        .to(nextCard, { 
+          opacity: 1, 
+          y: 0, 
+          filter: 'blur(0px)',
+          scale: 1,
+          pointerEvents: 'auto', 
+          duration: 0.8,
+          ease: 'power2.out' 
+        }, stepTime)
       }
     })
 
@@ -159,7 +174,7 @@ export default function Services() {
     }
   }, [])
 
-  // 2. Anime.js onScroll Synchronization Milestone Observer (Secondary System)
+  // 2. Anime.js onScroll Synchronization Milestone Observer
   useEffect(() => {
     if (!containerRef.current) return
 
@@ -220,7 +235,7 @@ export default function Services() {
         </div>
 
         <div className="services-stage-split">
-          {/* Left Column: Interactive Story Chapter Card */}
+          {/* Left Column: Interactive Story Chapter Card with Natural Text Transitions */}
           <div className="services-card-stack">
             {activeChapters.map((chapter, idx) => (
               <div
@@ -244,7 +259,7 @@ export default function Services() {
                   </div>
                 </div>
 
-                {/* Live Engineering Telemetry Readout with Anime.js Sync Indicator */}
+                {/* Live Engineering Telemetry Readout */}
                 <div className="osp-telemetry-badge">
                   <span className="telemetry-icon">⚡</span>
                   <code>{chapter.telemetry}</code>

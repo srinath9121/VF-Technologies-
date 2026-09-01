@@ -1,7 +1,7 @@
 export const hero = {
   tagline: "Version 2.0 is officially live",
   headlines: [
-    "Next-Generation Engineering & Telecom Infrastructure"
+    "Venkateswara Fiber Technologies & Telecom Infrastructure"
   ],
   subtitle: "Streamline your journey from launch to growth with smart, scalable engineering and infrastructure solutions that adapt to your business needs.",
   logo: "/logo.jpg"
@@ -152,8 +152,8 @@ export const testimonials = [
 ];
 
 export const clients = [
-  "https://vf-technologies.com/wp-content/uploads/2025/12/download.png",
-  "https://vf-technologies.com/wp-content/uploads/2025/12/download-2.png",
-  "https://vf-technologies.com/wp-content/uploads/2026/01/logos-ArcGIS1-1.png",
-  "https://vf-technologies.com/wp-content/uploads/2025/12/download-3.png"
+  "/volks-logo.svg",
+  "/autocad-logo.svg",
+  "/ocalc-logo.svg",
+  "/katapult-logo.svg"
 ];

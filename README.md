@@ -65,7 +65,6 @@ VF-Technologies/
 │   │   │   ├── About.jsx           # Mission statement & engineering pillars
 │   │   │   ├── Services.jsx        # Pinned 6-chapter narrative stage & HUD telemetry
 │   │   │   ├── ScrollHUD.jsx       # Floating scroll progress badge & chapter rail
-│   │   │   ├── Preloader.jsx       # Branded loading screen & asset initializer
 │   │   │   ├── Partners.jsx        # Carrier trust & client marquee
 │   │   │   ├── Careers.jsx         # Engineering career opportunities
 │   │   │   └── Contact.jsx         # Terminal contact form & office locations

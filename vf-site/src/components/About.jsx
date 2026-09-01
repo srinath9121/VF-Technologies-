@@ -68,7 +68,7 @@ export default function About() {
         <div className="about-statement-box">
           <h2 className="about-statement-text">
             {headingWords.map((word, i) => (
-              <span className="story-word" key={i}>{word} </span>
+              <span className="story-word" key={i} style={{ display: 'inline-block', marginRight: '0.28em' }}>{word}</span>
             ))}
           </h2>
           <p className="about-statement-sub">

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ocalc-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d6a9f" />
+      <stop offset="100%" stop-color="#1b4970" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="440" height="220" rx="12" fill="url(#ocalc-bg)" />
+  
+  <!-- Subtle utility pole line graphic in background -->
+  <line x1="260" y1="20" x2="260" y2="200" stroke="rgba(255, 255, 255, 0.25)" stroke-width="4" />
+  <line x1="200" y1="50" x2="320" y2="50" stroke="rgba(255, 255, 255, 0.25)" stroke-width="3" />
+  <line x1="210" y1="80" x2="310" y2="80" stroke="rgba(255, 255, 255, 0.25)" stroke-width="3" />
+  
+  <!-- Slogan top -->
+  <text x="32" y="44" font-family="'Inter', 'Arial', sans-serif" font-weight="500" font-size="24" fill="#ffffff">Faster. Smarter. Sharper.</text>
+
+  <!-- O-Calc main text -->
+  <text x="30" y="132" font-family="'Inter', 'Arial', sans-serif" font-weight="800" font-size="68" fill="#ffffff" letter-spacing="-1">O·Calc</text>
+
+  <!-- Pro script text -->
+  <text x="270" y="132" font-family="'Brush Script MT', 'Dancing Script', 'Caveat', cursive, sans-serif" font-weight="400" font-size="76" fill="#7ed6f8" font-style="italic">Pro</text>
+
+  <!-- Osmose tagline bottom left -->
+  <text x="32" y="188" font-family="'Inter', 'Arial', sans-serif" font-weight="700" font-size="26" fill="#ffffff" letter-spacing="0.5">Osmose</text>
+</svg>

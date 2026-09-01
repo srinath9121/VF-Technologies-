@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="autocad-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2a6d" />
+      <stop offset="100%" stop-color="#d8004e" />
+    </linearGradient>
+    <linearGradient id="autocad-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#800028" />
+      <stop offset="100%" stop-color="#5a001c" />
+    </linearGradient>
+  </defs>
+  <!-- Folded left side ribbon -->
+  <polygon points="35,65 90,30 90,205 35,235" fill="#e6195e" />
+  <!-- Shadow back block -->
+  <rect x="75" y="115" width="175" height="155" rx="14" fill="url(#autocad-dark)" />
+  <!-- Main front red block -->
+  <rect x="90" y="30" width="150" height="170" rx="14" fill="url(#autocad-pink)" />
+  <!-- White A inside main block -->
+  <text x="165" y="165" font-family="'Arial Black', sans-serif" font-weight="900" font-size="130" fill="#ffffff" text-anchor="middle">A</text>
+  <!-- CAD text in bottom block -->
+  <text x="162.5" y="232" font-family="'Arial Black', sans-serif" font-weight="900" font-size="60" fill="#ffffff" text-anchor="middle">CAD</text>
+</svg>

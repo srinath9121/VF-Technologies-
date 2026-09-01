@@ -1,78 +1,62 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { animate } from 'animejs'
-import { hero } from '../content'
 
-gsap.registerPlugin(ScrollTrigger)
-
-const NAV_SECTIONS = ['hero', 'about', 'services', 'partners', 'careers', 'contact']
-
-export default function Navbar({ scrollTo }) {
+export default function Navbar({ scrollToChapter }) {
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
   const navRef = useRef()
 
   useEffect(() => {
-    // GSAP: Navbar slides down from top on page load
     gsap.fromTo(navRef.current,
       { y: -80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.5 }
+      { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.3 }
     )
 
-    // Scroll state for glass blur effect
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
-
-    // GSAP ScrollTrigger: Track active section and animate the active nav link
-    NAV_SECTIONS.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 60%',
-        end: 'bottom 40%',
-        onEnter: () => setActiveSection(id),
-        onEnterBack: () => setActiveSection(id),
-      })
-    })
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      ScrollTrigger.getAll().forEach(t => t.kill())
-    }
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const navItems = [
+    { label: 'About', chapterIndex: 1 },
+    { label: 'Engineering', chapterIndex: 2 },
+    { label: 'Clients', chapterIndex: 3 },
+    { label: 'Careers', chapterIndex: 4 },
+    { label: 'Technology', chapterIndex: 5 },
+    { label: 'Contact', chapterIndex: 6 }
+  ]
+
   return (
-    <nav ref={navRef} className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-logo" onClick={() => scrollTo('hero')} style={{ cursor: 'pointer' }}>
-        <img src={hero.logo} alt="VF Technologies" />
-        <span className="navbar-brand-name">VF Technologies</span>
+    <header ref={navRef} className={`tower-navbar ${scrolled ? 'is-scrolled' : ''}`}>
+      {/* Brand Logo with Official VF Emblem */}
+      <div 
+        className="navbar-brand-group" 
+        onClick={() => scrollToChapter(0)}
+        style={{ cursor: 'pointer' }}
+      >
+        <img src="/vf-logo.png" alt="VF Logo" className="navbar-logo-img" />
+        <span className="brand-text-bold">VF TECHNOLOGIES</span>
       </div>
-      <ul className="navbar-links">
-        {[
-          ['about', 'About'],
-          ['services', 'Engineering'],
-          ['partners', 'Clients'],
-          ['careers', 'Careers'],
-          ['contact', 'Contact']
-        ].map(([id, label]) => (
-          <li key={id}>
-            <a
-              data-section={id}
-              onClick={() => scrollTo(id)}
-              className={activeSection === id ? 'nav-link-active' : ''}
-              style={{ cursor: 'pointer' }}
-            >
-              {label}
-            </a>
-          </li>
+
+      {/* Menu Links */}
+      <nav className="navbar-links-container">
+        {navItems.map((item, idx) => (
+          <button
+            key={idx}
+            className="nav-link-item"
+            onClick={() => scrollToChapter(item.chapterIndex)}
+          >
+            {item.label}
+          </button>
         ))}
-      </ul>
-      <button className="navbar-cta btn-primary-teal" onClick={() => scrollTo('contact')}>
-        Get Started
+      </nav>
+
+      {/* Action CTA */}
+      <button 
+        className="navbar-cta-teal"
+        onClick={() => scrollToChapter(6)}
+      >
+        GET STARTED
       </button>
-    </nav>
+    </header>
   )
 }
-

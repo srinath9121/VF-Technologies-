@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 12 500 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hex-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0082ab" />
+      <stop offset="100%" stop-color="#004770" />
+    </linearGradient>
+  </defs>
+
+  <!-- Hexagon logo icon -->
+  <polygon points="65,16 115,44 115,100 65,128 15,100 15,44" fill="url(#hex-grad)" />
+  
+  <!-- Inner white circle/magnifier shape -->
+  <circle cx="65" cy="72" r="28" fill="none" stroke="#ffffff" stroke-width="10" />
+  <line x1="77" y1="84" x2="101" y2="108" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
+
+  <!-- katapultPro bold large text -->
+  <text x="132" y="94" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="62" fill="#003b5c" letter-spacing="-0.5">katapult<tspan dx="8" fill="#0082ab" font-weight="600" letter-spacing="0">Pro</tspan></text>
+</svg>

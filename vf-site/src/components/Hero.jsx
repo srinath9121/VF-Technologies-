@@ -39,23 +39,18 @@ export default function Hero() {
     return () => ctx.revert()
   }, [])
 
-  const words = (hero.headlines[0] || "Next-Generation Engineering & Telecom Infrastructure").split(' ')
+  const words = (hero.headlines[0] || "Venkateswara Fiber Technologies & Telecom Infrastructure").split(' ')
 
   return (
     <section className="hero-cinematic" id="home" ref={heroRef}>
       <div className="hero-cinematic-content">
         
-        {/* Glowing Badge */}
-        <div className="hero-cinematic-tagline">
-          <span className="telemetry-dot"></span>
-          <span>{hero.tagline || "VF TECHNOLOGIES // OPTICAL INFRASTRUCTURE"}</span>
-          <span className="telemetry-live-chip">LIVE TELEMETRY</span>
-        </div>
+
         
         {/* Master Heading with Holographic Glow */}
         <h1 className="hero-cinematic-heading">
           {words.map((word, i) => (
-            <span className="word-span" key={i}>{word} </span>
+            <span className="word-span" key={i} style={{ display: 'inline-block', marginRight: '0.28em' }}>{word}</span>
           ))}
         </h1>
         
@@ -63,23 +58,7 @@ export default function Hero() {
           {hero.subtitle}
         </p>
 
-        {/* Live HUD Telemetry Strip */}
-        <div className="hero-telemetry-strip">
-          <div className="telemetry-item">
-            <span className="label">ARCHITECTURE</span>
-            <span className="value">TURNKEY_OSP_FTTH</span>
-          </div>
-          <div className="telemetry-divider"></div>
-          <div className="telemetry-item">
-            <span className="label">OPTICAL CORE</span>
-            <span className="value text-cyan">ACTIVE_LASER_GRID</span>
-          </div>
-          <div className="telemetry-divider"></div>
-          <div className="telemetry-item">
-            <span className="label">DEPLOYMENT</span>
-            <span className="value">NATIONWIDE_CARRIER</span>
-          </div>
-        </div>
+
 
         {/* Scroll Indicator */}
         <div className="hero-scroll-indicator">
