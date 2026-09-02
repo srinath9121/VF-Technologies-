@@ -186,43 +186,6 @@ function VolumetricMountainMist() {
   )
 }
 
-// 3. Volumetric Beacon God Ray Light Cone (Skill: threejs-raymarched-space-effects)
-function VolumetricBeaconGodRay() {
-  const beamMatRef = useRef()
-
-  const uniforms = useMemo(() => ({
-    uTime: { value: 0 },
-    uColorBeam: { value: new THREE.Color('#38bdf8') },
-    uColorCore: { value: new THREE.Color('#ffffff') },
-    uIntensity: { value: 1.0 }
-  }), [])
-
-  useFrame(({ clock }) => {
-    if (beamMatRef.current) {
-      beamMatRef.current.uniforms.uTime.value = clock.getElapsedTime()
-    }
-  })
-
-  return (
-    <group position={[0, 48.0, 0]}>
-      {/* Downward Raymarched Volumetric Light Cone */}
-      <mesh position={[0, -12, 0]} rotation={[0, 0, 0]}>
-        <coneGeometry args={[10.0, 24.0, 32, 1, true]} />
-        <shaderMaterial
-          ref={beamMatRef}
-          vertexShader={VolumetricLightConeShader.vertexShader}
-          fragmentShader={VolumetricLightConeShader.fragmentShader}
-          uniforms={uniforms}
-          transparent
-          depthWrite={false}
-          side={THREE.DoubleSide}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-    </group>
-  )
-}
-
 // 4. Layered Shan Shui Mountain Ridges
 function PoeticMountainLandscape() {
   const foreLeftRef = useRef()
@@ -463,10 +426,7 @@ export default function MainScene({ scrollProgressRef }) {
         {/* 6. Persistent 3D Telecommunication Tower */}
         <TelecomTower scrollProgressRef={scrollProgressRef} />
 
-        {/* 7. Volumetric Beacon God Ray Light Cone (threejs-raymarched-space-effects) */}
-        <VolumetricBeaconGodRay />
-
-        {/* 8. Signature OSP Cable -> Fiber -> Network Transition */}
+        {/* 7. Signature OSP Cable -> Fiber -> Network Transition */}
         <TowerFiberTransition scrollProgressRef={scrollProgressRef} />
 
         {/* Film-Grade Post-Processing */}
