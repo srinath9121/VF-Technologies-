@@ -1,4 +1,5 @@
 {
+  "installCommand": "cd vf-site && npm install",
   "buildCommand": "cd vf-site && npm run build",
   "outputDirectory": "vf-site/dist",
   "rewrites": [

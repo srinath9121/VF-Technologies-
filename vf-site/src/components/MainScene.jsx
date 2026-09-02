@@ -4,7 +4,6 @@ import { EffectComposer, Bloom, Vignette, ChromaticAberration } from '@react-thr
 import * as THREE from 'three'
 import TelecomTower from './TelecomTower'
 import TowerFiberTransition from './TowerFiberTransition'
-import TelecomGlobeNetwork from './TelecomGlobeNetwork'
 import { 
   PoeticSkyShader, 
   TerrainEdgeGlowShader, 
@@ -452,10 +451,7 @@ export default function MainScene({ scrollProgressRef }) {
         {/* 1. Rayleigh/Mie Atmospheric Scattering Sky */}
         <PoeticSkyBackdrop />
 
-        {/* 2. Self-Rotating Global Telecom Network Globe with Outward Signal Beams */}
-        <TelecomGlobeNetwork />
-
-        {/* 3. Volumetric Mountain Mist Blankets (threejs-volumetric-clouds) */}
+        {/* 2. Volumetric Mountain Mist Blankets (threejs-volumetric-clouds) */}
         <VolumetricMountainMist />
 
         {/* 4. Layered Shan Shui & Romantic Mountain Ridges */}
