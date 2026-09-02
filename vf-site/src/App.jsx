@@ -50,8 +50,18 @@ export default function App() {
       pin: true,
       scrub: 1.0,
       onUpdate: (self) => {
-        scrollProgressRef.current = self.progress
-        const curIdx = Math.min(totalChapters - 1, Math.max(0, Math.floor(self.progress * totalChapters)))
+        const p = self.progress
+        scrollProgressRef.current = p
+
+        let curIdx = 0
+        if (p < 0.16) curIdx = 0
+        else if (p < 0.30) curIdx = 1
+        else if (p < 0.44) curIdx = 2
+        else if (p < 0.58) curIdx = 3
+        else if (p < 0.72) curIdx = 4
+        else if (p <= 0.86) curIdx = 5
+        else curIdx = 6
+
         setActiveIndex(curIdx)
       }
     })
@@ -66,13 +76,13 @@ export default function App() {
 
   // Smooth glide to any tower chapter band
   const scrollToChapter = (chapterIndex) => {
-    const totalChapters = TOWER_CHAPTERS.length
-    const targetProgress = chapterIndex / (totalChapters - 1)
+    const chapterProgressMap = [0.0, 0.22, 0.36, 0.50, 0.64, 0.78, 0.92]
+    const targetProgress = chapterProgressMap[chapterIndex] ?? 0.0
     const pinContainer = document.querySelector('.tower-pinned-viewport')
 
     if (pinContainer && lenisRef.current) {
       const pinTop = pinContainer.offsetTop
-      const pinDistance = totalChapters * 1.2 * window.innerHeight
+      const pinDistance = TOWER_CHAPTERS.length * 1.2 * window.innerHeight
       const targetScroll = pinTop + targetProgress * pinDistance
       lenisRef.current.scrollTo(targetScroll, { duration: 1.6 })
     }
